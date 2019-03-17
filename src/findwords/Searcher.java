@@ -91,10 +91,9 @@ public class Searcher {
     public int findPrefix(Dictionary d, String w, int n) {
         int min = 0;
         int max = d.size() - 1;
-        int mid;
         // min <= max
         while (min <= max) {
-            mid = (min + max) / 2;
+            int mid = (min + max) / 2;
             if (lessThan(d.getWord(mid), w, n)) {
                 min = mid + 1;
             } else {
