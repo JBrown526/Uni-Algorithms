@@ -20,6 +20,7 @@ public class Searcher {
     public boolean equal(String s, String t, int n) {
         int sLen = s.length();
         int tLen = t.length();
+
         if (sLen < n) {
             if (sLen == tLen) {
                 return equalsCheck(s, t, sLen);
@@ -36,7 +37,7 @@ public class Searcher {
     }
 
     private boolean equalsCheck(String s, String t, int n) {
-        //
+        // i >= 0 && i < n
         for (int i = 0; i < n; i++) {
             if (s.charAt(i) != t.charAt(i)) {
                 return false;
@@ -54,6 +55,7 @@ public class Searcher {
      * @return true if s is less than t in the first n characters
      */
     public boolean lessThan(String s, String t, int n) {
+        // i >= 0 && i < n
         for (int i = 0; i < n; i++) {
             if (s.charAt(i) < t.charAt(i)) {
                 return true;
@@ -61,7 +63,7 @@ public class Searcher {
                 return false;
             }
             if (i >= s.length() - 1) {
-                return !(i == t.length() - 1);
+                return (i != t.length() - 1);
             }
         }
         return false;
@@ -77,18 +79,19 @@ public class Searcher {
      * are smaller than e when comparing the first n characters.
      */
     public int findPrefix(Dictionary d, String w, int n) {
-        int lo = 0;
-        int hi = d.size() - 1;
+        int min = 0;
+        int max = d.size() - 1;
         int mid;
-        while (lo <= hi) {
-            mid = (lo + hi) / 2;
+        // min <= max
+        while (min <= max) {
+            mid = (min + max) / 2;
             if (lessThan(d.getWord(mid), w, n)) {
-                lo = mid + 1;
+                min = mid + 1;
             } else {
-                hi = mid - 1;
+                max = mid - 1;
             }
         }
-        return lo;
+        return min;
     }
 
     /**
@@ -101,9 +104,11 @@ public class Searcher {
     public ArrayList<String> findMatches(Dictionary d, String clue) {
         ArrayList<String> matches = new ArrayList<>();
         ArrayList<Integer> check = new ArrayList<>();
+
         int prefixLength = 0;
         boolean prefixCheck = true;
 
+        // i >= 0 && i < clue.length()
         for (int i = 0; i < clue.length(); i++) {
             if (clue.charAt(i) != '.') {
                 check.add(i);
@@ -114,22 +119,28 @@ public class Searcher {
                 prefixCheck = false;
             }
         }
+
         System.out.println(check);
         System.out.println(prefixLength);
 
         int searchPosition = findPrefix(d, clue, prefixLength);
         System.out.println(searchPosition);
 
+        // while the clue's prefix matches up with the dictionary word's prefix
+        // &&
+        // while the search position has not reached the end of the dictionary
         while (equal(clue, d.getWord(searchPosition), prefixLength) && searchPosition < d.size() - 1) {
             String dictionaryEntry = d.getWord(searchPosition);
             boolean equal = true;
+
             if (clue.length() == dictionaryEntry.length()) {
+                //
+//                for (int i = prefixLength; i < check.size(); i++) {
                 for (int index : check) {
-                    if (equal) {
-                        if (index < dictionaryEntry.length()) {
-                            equal = clue.charAt(index) == dictionaryEntry.charAt(index);
-                        } else {
-                            equal = false;
+                    if (index >= prefixLength) {
+                        equal = clue.charAt(index) == dictionaryEntry.charAt(index);
+                        if (!equal) {
+                            break;
                         }
                     }
                 }
