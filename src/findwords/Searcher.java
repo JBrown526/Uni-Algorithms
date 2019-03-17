@@ -57,9 +57,6 @@ public class Searcher {
     public boolean lessThan(String s, String t, int n) {
         // i >= 0 && i < n
         for (int i = 0; i < n; i++) {
-            if (i >= t.length()) {
-                return false;
-            }
             if (s.charAt(i) < t.charAt(i)) {
                 return true;
             }
@@ -68,6 +65,9 @@ public class Searcher {
             }
             if (i >= s.length() - 1) {
                 return (i != t.length() - 1);
+            }
+            if (i >= t.length() - 1) {
+                return false;
             }
         }
         return false;
