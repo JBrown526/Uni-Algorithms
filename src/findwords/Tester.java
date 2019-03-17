@@ -36,15 +36,16 @@ public class Tester {
     public static void main(String[] args) throws IOException {
         Tester tester = new Tester();
 
-        tester.testEqual("binder", "binding", 4);
-        tester.testEqual("binder", "binding", 5);
-        tester.testEqual("bind", "bind", 5);
+        tester.testEqual("binder", "binding", 4);       // true
+        tester.testEqual("binder", "binding", 5);       // false
+        tester.testEqual("bind", "bind", 5);            //
         tester.testEqual("dog", "cat", 0);
         tester.testEqual("dog", "dogging", 4);
         tester.testEqual("dogging", "dog", 4);
-        tester.testEqual("kitty", "kit", 4);
-        tester.testEqual("kit", "kitty", 4);
         tester.testEqual("kit", "kit", 4);
+        tester.testEqual("", "cat", 2);
+        tester.testEqual("cat", "", 2);
+        tester.testEqual("", "", 2);
 
         tester.testLessThan("binary", "bind", 4);
         tester.testLessThan("binder", "binding", 4);
@@ -57,18 +58,30 @@ public class Tester {
         tester.testLessThan("a", "a", 2);
         tester.testLessThan("a", "aa", 2);
         tester.testLessThan("aa", "a", 2);
+        tester.testLessThan("", "ab", 2);
+        tester.testLessThan("ab", "", 2);
+        tester.testLessThan("", "", 2);
 
         tester.testFindPrefix("bi", 2);
         tester.testFindPrefix("bi..r.", 2);
         tester.testFindPrefix("ins...", 0);
         tester.testFindPrefix("ins...", 1);
         tester.testFindPrefix("ins...", 2);
+        tester.testFindPrefix(".", 2);
+        tester.testFindPrefix(".a", 2);
+        tester.testFindPrefix("", 2);
+        tester.testFindPrefix("zzzzzzzzzzzzzzz", 8);
 
         tester.testFindMatches("bi..r.");
         tester.testFindMatches("ca.");
         tester.testFindMatches(".og");
         tester.testFindMatches("myna.");
         tester.testFindMatches(".at");
+        tester.testFindMatches(".a.");
         tester.testFindMatches("abac.");
+        tester.testFindMatches("zzzzzzzzzz.z");
+        tester.testFindMatches(".......................................................................");
+        tester.testFindMatches("");
+        tester.testFindMatches("zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz");
     }
 }

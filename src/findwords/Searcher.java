@@ -55,6 +55,12 @@ public class Searcher {
      * @return true if s is less than t in the first n characters
      */
     public boolean lessThan(String s, String t, int n) {
+        if (t.length() == 0) {
+            return false;
+        }
+        if (s.length() == 0) {
+            return true;
+        }
         // i >= 0 && i < n
         for (int i = 0; i < n; i++) {
             if (s.charAt(i) < t.charAt(i)) {
@@ -124,18 +130,14 @@ public class Searcher {
             }
         }
 
-        System.out.println(check);
-        System.out.println(prefixLength);
-
         int searchPosition = findPrefix(d, clue, prefixLength);
-        System.out.println(searchPosition);
 
         /*
-        while the clue's prefix matches up with the dictionary word's prefix
-        &
         while the search position has not reached the end of the dictionary
+        &
+        while the clue's prefix matches up with the dictionary word's prefix
         */
-        while (equal(clue, d.getWord(searchPosition), prefixLength) && searchPosition < d.size() - 1) {
+        while (searchPosition < d.size() - 1 && equal(clue, d.getWord(searchPosition), prefixLength)) {
             String dictionaryEntry = d.getWord(searchPosition);
             boolean equal = true;
 
@@ -157,7 +159,6 @@ public class Searcher {
             }
             searchPosition++;
         }
-        System.out.println(matches.size());
         return matches;
     }
 }
