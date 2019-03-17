@@ -36,38 +36,39 @@ public class Tester {
     public static void main(String[] args) throws IOException {
         Tester tester = new Tester();
 
-//        tester.testEqual("binder", "binding", 4);
-//        tester.testEqual("binder", "binding", 5);
-//        tester.testEqual("bind", "bind", 5);
-//        tester.testEqual("dog", "cat", 0);
-//        tester.testEqual("dog", "dogging", 4);
-//        tester.testEqual("dogging", "dog", 4);
-//        tester.testEqual("kitty", "kit", 4);
-//        tester.testEqual("kit", "kitty", 4);
-//        tester.testEqual("kit", "kit", 4);
+        tester.testEqual("binder", "binding", 4);
+        tester.testEqual("binder", "binding", 5);
+        tester.testEqual("bind", "bind", 5);
+        tester.testEqual("dog", "cat", 0);
+        tester.testEqual("dog", "dogging", 4);
+        tester.testEqual("dogging", "dog", 4);
+        tester.testEqual("kitty", "kit", 4);
+        tester.testEqual("kit", "kitty", 4);
+        tester.testEqual("kit", "kit", 4);
 
-//        tester.testLessThan("binary", "bind", 4);
-//        tester.testLessThan("binder", "binding", 4);
-//        tester.testLessThan("binding", "binder", 4);
-//        tester.testLessThan("bin", "binary", 4);
-//        tester.testLessThan("bit", "binary", 4);
-//        tester.testLessThan("a", "b", 1);
-//        tester.testLessThan("a", "b", 2);
-//        tester.testLessThan("a", "a", 1);
-//        tester.testLessThan("a", "a", 2);
-//        tester.testLessThan("a", "aa", 2);
+        tester.testLessThan("binary", "bind", 4);
+        tester.testLessThan("binder", "binding", 4);
+        tester.testLessThan("binding", "binder", 4);
+        tester.testLessThan("bin", "binary", 4);
+        tester.testLessThan("bit", "binary", 4);
+        tester.testLessThan("a", "b", 1);
+        tester.testLessThan("a", "b", 2);
+        tester.testLessThan("a", "a", 1);
+        tester.testLessThan("a", "a", 2);
+        tester.testLessThan("a", "aa", 2);
+        tester.testLessThan("aa", "a", 2);
 
-//        tester.testFindPrefix("bi", 2);
-//        tester.testFindPrefix("bi..r.", 2);
-//        tester.testFindPrefix("ins...", 0);
-//        tester.testFindPrefix("ins...", 1);
-//        tester.testFindPrefix("ins...", 2);
+        tester.testFindPrefix("bi", 2);
+        tester.testFindPrefix("bi..r.", 2);
+        tester.testFindPrefix("ins...", 0);
+        tester.testFindPrefix("ins...", 1);
+        tester.testFindPrefix("ins...", 2);
 
-//        tester.testFindMatches("bi..r.");
-//        tester.testFindMatches("ca.");
-//        tester.testFindMatches(".og");
-//        tester.testFindMatches("myna.");
-//        tester.testFindMatches(".at");
-        tester.testFindMatches("aba.k");
+        tester.testFindMatches("bi..r.");
+        tester.testFindMatches("ca.");
+        tester.testFindMatches(".og");
+        tester.testFindMatches("myna.");
+        tester.testFindMatches(".at");
+        tester.testFindMatches("abac.");
     }
 }
