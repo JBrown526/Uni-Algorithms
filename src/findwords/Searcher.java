@@ -108,7 +108,7 @@ public class Searcher {
         int prefixLength = 0;
         boolean prefixCheck = true;
 
-        // i >= 0 && i < clue.length()
+        // i >= 0 && i < clue length
         for (int i = 0; i < clue.length(); i++) {
             if (clue.charAt(i) != '.') {
                 check.add(i);
@@ -126,22 +126,25 @@ public class Searcher {
         int searchPosition = findPrefix(d, clue, prefixLength);
         System.out.println(searchPosition);
 
-        // while the clue's prefix matches up with the dictionary word's prefix
-        // &&
-        // while the search position has not reached the end of the dictionary
+        /*
+        while the clue's prefix matches up with the dictionary word's prefix
+        &
+        while the search position has not reached the end of the dictionary
+        */
         while (equal(clue, d.getWord(searchPosition), prefixLength) && searchPosition < d.size() - 1) {
             String dictionaryEntry = d.getWord(searchPosition);
             boolean equal = true;
 
             if (clue.length() == dictionaryEntry.length()) {
-                //
-//                for (int i = prefixLength; i < check.size(); i++) {
-                for (int index : check) {
-                    if (index >= prefixLength) {
-                        equal = clue.charAt(index) == dictionaryEntry.charAt(index);
-                        if (!equal) {
-                            break;
-                        }
+                /*
+                while i >= the length of the clue's prefix
+                &
+                while i < the size of the array of characters to check
+                */
+                for (int i = prefixLength; i < check.size(); i++) {
+                    equal = clue.charAt(check.get(i)) == dictionaryEntry.charAt(check.get(i));
+                    if (!equal) {
+                        break;
                     }
                 }
                 if (equal) {

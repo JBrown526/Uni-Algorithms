@@ -63,11 +63,11 @@ public class Tester {
 //        tester.testFindPrefix("ins...", 1);
 //        tester.testFindPrefix("ins...", 2);
 
-        tester.testFindMatches("bi..r.");
-        tester.testFindMatches("ca.");
-        tester.testFindMatches(".og");
-        tester.testFindMatches("myna.");
-        tester.testFindMatches(".at");
-        tester.testFindMatches("abac.");
+//        tester.testFindMatches("bi..r.");
+//        tester.testFindMatches("ca.");
+//        tester.testFindMatches(".og");
+//        tester.testFindMatches("myna.");
+//        tester.testFindMatches(".at");
+        tester.testFindMatches("aba.k");
     }
 }
